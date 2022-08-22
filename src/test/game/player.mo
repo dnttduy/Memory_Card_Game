@@ -56,7 +56,7 @@ module Player {
           startedTime = lastestHistory.startedTime;
           selectedPairCards = Array.append(lastestHistory.selectedPairCards, [paircard]);
           numberCorrectPair = lastestHistory.numberCorrectPair + Card.isCorrectPairCard(paircard);
-          score = lastestHistory.score + 1 + (if (numberCorrectPair == true) { (overTime/1000000000) -  lastestHistory.startedTime} else { 0 });
+          score = lastestHistory.score + 1 + (if (numberCorrectPair == true) { (overTime/1000000000) } else { 0 });
       };
 
       listHistories[listHistories.size() - 1] := newHistory;
