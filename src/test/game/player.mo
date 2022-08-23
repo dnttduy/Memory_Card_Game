@@ -27,7 +27,7 @@ module Player {
 
   public func createHistory(player : Types.Player, paircard : (Types.Card, Types.Card), state : State.State) {
     let newHistory : Types.History = {
-        startedTime = Time.now()/1000000000;
+        startedTime = Time.now();
         selectedPairCards = [paircard];
         numberCorrectPair = Card.isCorrectPairCard(paircard);
         score = 1;
@@ -56,7 +56,7 @@ module Player {
           startedTime = lastestHistory.startedTime;
           selectedPairCards = Array.append(lastestHistory.selectedPairCards, [paircard]);
           numberCorrectPair = lastestHistory.numberCorrectPair + Card.isCorrectPairCard(paircard);
-          score = lastestHistory.score + 1 + (if (numberCorrectPair == true) { (overTime/1000000000) } else { 0 });
+          score = lastestHistory.score + 1 + (if (numberCorrectPair == true) { overTime } else { 0 });
       };
 
       listHistories[listHistories.size() - 1] := newHistory;
