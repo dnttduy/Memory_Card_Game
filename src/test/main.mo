@@ -115,7 +115,7 @@ actor {
     };
   };
 
-  public shared query({caller}) func isValidHistory(listFromClient : [(Types.Card, Types.Card)]) : async Response<Bool> {
+  public shared query({caller}) func isValid(listFromClient : [(Types.Card, Types.Card)]) : async Response<Bool> {
     // if(Principal.toText(caller) == "2vxsx-fae") {
     //   return #err(#NotAuthorized);//isNotAuthorized
     // };
@@ -128,7 +128,7 @@ actor {
       };
       case (?V) {
         let lastestHistory = V.histories[V.histories.size() - 1];
-        if (V.isPlaying == false and lastestHistory.selectedPairCards == listFromClient) {
+        if (lastestHistory.selectedPairCards == listFromClient) {
           return #ok(true);
         };
         #ok(false);
